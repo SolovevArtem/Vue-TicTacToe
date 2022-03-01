@@ -41,7 +41,7 @@ const MakeMove = (x, y) => {
 
   if (player.value === "X") player.value = "O";
   else player.value = "X";
-
+  console.log(winner.value);
   // player.value = player.value === "X" ? "0" : "X";
 };
 
@@ -66,13 +66,13 @@ const ResetGame = () => {
           v-for="(cell, y) in row"
           :key="y"
           @click="MakeMove(x, y)"
-          class="border border-white h-24 w-24 hover:bg-gray-600 flex items-center justify-center cursor-pointer material-icons-outlined text-4xl"
-        >
+          :class="`border border-white w-24 h-24 hover:bg-gray-700 flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${cell === 'X' ? 'text-pink-500' : 'text-blue-400'}`">
           {{ cell === "X" ? "close" : cell === "O" ? "circle" : "" }}
         </div>
       </div>
     </div>
-    <h2 class="text-6xl fond-bold mb-8">Player '{{winner}}' wins</h2>
+    <h2 v-if="winner" class="text-6xl font-bold mb-8">Player '{{winner}}' wins</h2>
+    <button v-if="winner" @click="ResetGame" class="px-4 py-2 bg-pink-800 rounded uppercase font-bold hover:bg-pink 400 duration-300"> Start a New Game</button>
   </main>
 </template>
 
