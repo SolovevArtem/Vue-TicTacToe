@@ -10,6 +10,8 @@ const board = ref([
   ["", "", ""],
 ]);
 
+const gameState = ref ("");
+
 const CalculateWinner = (squares) => {
   const lines = [
     [0, 1, 2],
@@ -30,10 +32,15 @@ const CalculateWinner = (squares) => {
   }
   return null;
 };
-
+const isGameOn = (gameStarted) => {
+  return gameStarted;
+}
 const winner = computed(() => CalculateWinner(board.value.flat()));
+const gameStarted= computed (()=> isGameOn(gameState.value));
 
 const MakeMove = (x, y) => {
+  console.log(gameStarted);
+  if (!gameStarted.value) gameState.value = true;
   if (winner.value) return;
   if (board.value[x][y] !== "") return;
 
@@ -41,9 +48,10 @@ const MakeMove = (x, y) => {
 
   if (player.value === "X") player.value = "O";
   else player.value = "X";
-  console.log(winner.value);
+  console.log(gameStarted);
   // player.value = player.value === "X" ? "0" : "X";
 };
+
 
 const ResetGame = () => {
   board.value = [
@@ -52,7 +60,12 @@ const ResetGame = () => {
     ["", "", ""],
   ];
   player.value = "X";
+  gameState.value = false;
 };
+
+const PickSide = (a) => {
+  player.value = a;
+}
 </script>
 
 <template>
@@ -66,13 +79,28 @@ const ResetGame = () => {
           v-for="(cell, y) in row"
           :key="y"
           @click="MakeMove(x, y)"
-          :class="`border border-white w-24 h-24 hover:bg-gray-700 flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${cell === 'X' ? 'text-pink-500' : 'text-blue-400'}`">
+          :class="`border border-white w-24 h-24 hover:bg-teal-700 flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${
+            cell === 'X' ? 'text-pink-500' : 'text-blue-400'
+          }`"
+        >
           {{ cell === "X" ? "close" : cell === "O" ? "circle" : "" }}
         </div>
       </div>
     </div>
-    <h2 v-if="winner" class="text-6xl font-bold mb-8">Player '{{winner}}' wins</h2>
-    <button v-if="winner" @click="ResetGame" class="px-4 py-2 bg-pink-800 rounded uppercase font-bold hover:bg-pink 400 duration-300"> Start a New Game</button>
+    <h2 v-if="winner" class="text-6xl font-bold mb-8">
+      Player '{{ winner }}' wins
+    </h2>
+    <div v-if="!gameStarted">
+      <h3 class="text-xl mb-5 font-bold uppercase">Choose a side</h3>
+      <button class="mx-16" :key="X" @click="PickSide(X)">X</button> <button class="mx-16" :key="O" @click="PickSide(O)">O</button>
+    </div>
+    <button
+      v-if="winner"
+      @click="ResetGame"
+      class="px-4 py-2 bg-pink-800 rounded-full uppercase font-bold hover:bg-pink 400 duration-300"
+    >
+      Start a New Game
+    </button>
   </main>
 </template>
 
