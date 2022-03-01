@@ -91,8 +91,8 @@ const PickSide = (a) => {
     </h2>
     <div v-if="!gameStarted">
       <h3 class="text-xl mb-5 font-bold uppercase">Choose a side</h3>
-      <button :class="`w-20 mx-16 bg-pink-800 rounded-full uppercase font-bold hover:bg-pink 400 duration-300`" @click="PickSide('X')">X</button>
-      <button :class="`w-20 mx-16 bg-pink-800 rounded-full uppercase font-bold hover:bg-pink 400 duration-300`" @click="PickSide('O')">O</button>
+      <button :class="`w-20 mx-16 my-2 bg-pink-800 rounded-full uppercase font-bold hover:bg-pink 400 duration-300`" @click="PickSide('X')">X</button>
+      <button :class="`w-20 mx-16 my-2 bg-pink-800 rounded-full uppercase font-bold hover:bg-pink 400 duration-300`" @click="PickSide('O')">O</button>
     </div>
     <button
       v-if="winner"
