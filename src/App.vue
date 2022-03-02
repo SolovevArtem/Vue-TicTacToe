@@ -83,7 +83,7 @@ const PickSide = (a) => {
   <div id="gameBox" :class="`duration-300`">
     <main class="pt-8 text-center bg-light-bg dark:bg-dark-bg min-h-screen">
       <div class="inline-flex">
-        <h1 class="text-3xl font-bold uppercase text-light-tx1">
+        <h1 class="text-3xl font-bold uppercase text-light-tx1 dark:text-dark-tx2">
           Tic Tac Toe Game
         </h1>
         <!-- <button
@@ -111,7 +111,7 @@ const PickSide = (a) => {
           <span class="text-xs font-semibold">Dark</span>
         </div>
       </div>
-      <h3 class="text-xl mt-4 mb-4 text-light-tb">
+      <h3 class="text-xl font-bold mt-4 mb-4 text-light-tb dark:text-dark-tb">
         Player {{ player }}`s turn
       </h3>
 
@@ -121,7 +121,7 @@ const PickSide = (a) => {
             v-for="(cell, y) in row"
             :key="y"
             @click="MakeMove(x, y)"
-            :class="`border-2 border-light-tb w-24 h-24 hover:bg-light-ext flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${
+            :class="`border-2 border-light-tb dark:border-dark-tb w-24 h-24 hover:bg-light-ext flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${
               cell === 'X' ? 'text-pink-500' : 'text-blue-400'
             }`"
           >
@@ -129,7 +129,7 @@ const PickSide = (a) => {
           </div>
         </div>
       </div>
-      <h2 v-if="winner" class="text-6xl font-bold mb-8 text-white">
+      <h2 v-if="winner" class="text-6xl font-bold mb-8 text-light-tx dark:text-dark-tb">
         Player '{{ winner }}' wins
       </h2>
       <div v-if="!gameStarted">
@@ -152,7 +152,7 @@ const PickSide = (a) => {
       <button
         v-if="winner"
         @click="ResetGame"
-        :class="`px-4 py-2 bg-light-tx2 text-white rounded-full uppercase font-bold hover:bg-light-tx1 duration-300`"
+        :class="`px-4 py-2 bg-light-tx1 text-white dark:bg-dark-tx2 rounded-full uppercase font-bold hover:bg-light-tx1 duration-300`"
       >
         Start a New Game
       </button>
