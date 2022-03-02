@@ -11,6 +11,7 @@ const board = ref([
 ]);
 
 const gameState = ref("");
+const themeState = ref("");
 
 const CalculateWinner = (squares) => {
   const lines = [
@@ -61,6 +62,14 @@ const ResetGame = () => {
   gameState.value = false;
 };
 
+const SwitchTheme = () => {
+  if (document.getElementById("gameBox").classList.contains("dark")) {
+    document.getElementById("gameBox").classList.remove("dark");
+  } else {
+    document.getElementById("gameBox").classList.add("dark");
+  }
+};
+
 const PickSide = (a) => {
   player.value = a;
   console.log(player.value);
@@ -68,40 +77,98 @@ const PickSide = (a) => {
 </script>
 
 <template>
-  <main class="pt-8 text-center dark:bg-gray-800 min-h-screen dark:text-white">
-    <h1 class="mb-8 text-3xl font-bold uppercase">Tic Tac Toe Game</h1>
-    <h3 class="text-xl mb-4">Player {{ player }}`s turn</h3>
-
-    <div class="flex flex-col items-center mb-8">
-      <div v-for="(row, x) in board" :key="x" class="flex">
-        <div
-          v-for="(cell, y) in row"
-          :key="y"
-          @click="MakeMove(x, y)"
-          :class="`border border-white w-24 h-24 hover:bg-teal-700 flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${
-            cell === 'X' ? 'text-pink-500' : 'text-blue-400'
-          }`"
+  <div id="gameBox" :class="`duration-300`">
+    <main class="pt-8 text-center bg-light-bg dark:bg-dark-bg min-h-screen">
+      <div class="inline-flex">
+        <h1 class="text-3xl font-bold uppercase text-light-tx1">
+          Tic Tac Toe Game
+        </h1>
+        <!-- <button
+          @click="SwitchTheme()"
+          :class="`absolute right-4 px-4 py-1 bg-light-tx2 text-white rounded-full uppercase font-bold hover:bg-light-tx1 duration-300`"
         >
-          {{ cell === "X" ? "close" : cell === "O" ? "circle" : "" }}
+          Toggle
+        </button> -->
+        <div
+          class="inline-flex absolute right-8 mt-1.5 items-center space-x-2 mx-auto"
+        >
+          <span class="text-xs font-extralight">Light </span>
+
+          <div>
+            <input type="checkbox" name="" id="checkbox" class="hidden" />
+            <label for="checkbox" class="cursor-pointer">
+              <div
+                class="w-9 h-5 flex items-center bg-gray-300 rounded-full p2"
+              >
+                <div class="switch-ball w-4 h-4 bg-white rounded-full shadow"></div>
+              </div>
+            </label>
+          </div>
+
+          <span class="text-xs font-semibold">Dark</span>
         </div>
       </div>
-    </div>
-    <h2 v-if="winner" class="text-6xl font-bold mb-8">
-      Player '{{ winner }}' wins
-    </h2>
-    <div v-if="!gameStarted">
-      <h3 class="text-xl mb-5 font-bold uppercase">Choose a side</h3>
-      <button :class="`w-20 mx-16 my-2 bg-pink-800 rounded-full uppercase font-bold hover:bg-pink 400 duration-300`" @click="PickSide('X')">X</button>
-      <button :class="`w-20 mx-16 my-2 bg-pink-800 rounded-full uppercase font-bold hover:bg-pink 400 duration-300`" @click="PickSide('O')">O</button>
-    </div>
-    <button
-      v-if="winner"
-      @click="ResetGame"
-      :class="`px-4 py-2 bg-pink-800 rounded-full uppercase font-bold hover:bg-pink-400 duration-300`"
-    >
-      Start a New Game
-    </button>
-  </main>
+      <h3 class="text-xl mt-4 mb-4 text-light-tb">
+        Player {{ player }}`s turn
+      </h3>
+
+      <div class="flex flex-col items-center mb-8">
+        <div v-for="(row, x) in board" :key="x" class="flex">
+          <div
+            v-for="(cell, y) in row"
+            :key="y"
+            @click="MakeMove(x, y)"
+            :class="`border-2 border-light-tb w-24 h-24 hover:bg-light-ext flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${
+              cell === 'X' ? 'text-pink-500' : 'text-blue-400'
+            }`"
+          >
+            {{ cell === "X" ? "close" : cell === "O" ? "circle" : "" }}
+          </div>
+        </div>
+      </div>
+      <h2 v-if="winner" class="text-6xl font-bold mb-8 text-white">
+        Player '{{ winner }}' wins
+      </h2>
+      <div v-if="!gameStarted">
+        <h3 class="text-xl mb-5 font-bold uppercase text-light-tx2">
+          Choose a side
+        </h3>
+        <button
+          :class="`w-20 mx-16 my-2 bg-light-tx2 text-light-tx rounded-full uppercase font-bold hover:bg-pink 400 duration-300`"
+          @click="PickSide('X')"
+        >
+          X
+        </button>
+        <button
+          :class="`w-20 mx-16 my-2 bg-light-tx2 text-light-tx  rounded-full uppercase font-bold hover:bg-pink 400 duration-300`"
+          @click="PickSide('O')"
+        >
+          O
+        </button>
+      </div>
+      <button
+        v-if="winner"
+        @click="ResetGame"
+        :class="`px-4 py-2 bg-light-tx2 text-white rounded-full uppercase font-bold hover:bg-light-tx1 duration-300`"
+      >
+        Start a New Game
+      </button>
+    </main>
+  </div>
 </template>
 
-<style></style>
+<style>
+#checkbox:checked + label .switch-ball {
+  background-color: white;
+  transform: translateX(24px);
+  transition: transform 0.3s linear;
+}
+
+#checkbox:not(:checked) + label .switch-ball {
+  background-color: white;
+  transform: translateX(0px);
+  transition: transform 0.3s linear;
+}
+
+
+</style>
