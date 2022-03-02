@@ -95,20 +95,20 @@ const PickSide = (a) => {
         <div
           class="inline-flex absolute right-8 mt-1.5 items-center space-x-2 mx-auto"
         >
-          <span class="text-xs font-extralight">Light </span>
+          <span class="text-xs font-extralight text-light-tx1 dark:text-dark-tb">Light </span>
 
           <div>
             <input @click="SwitchTheme()" type="checkbox" name="" id="checkbox" class="hidden" />
             <label for="checkbox" class="cursor-pointer">
               <div
-                class="w-9 h-5 flex items-center bg-gray-300 rounded-full p2"
+                class="w-9 h-5 flex items-center bg-light-tx2 dark:bg-dark-tx2 rounded-full p2"
               >
                 <div class="switch-ball w-4 h-4 bg-white rounded-full shadow"></div>
               </div>
             </label>
           </div>
 
-          <span class="text-xs font-semibold">Dark</span>
+          <span class="text-xs font-semibold text-light-tb dark:text-dark-tx2">Dark</span>
         </div>
       </div>
       <h3 class="text-xl font-bold mt-4 mb-4 text-light-tb dark:text-dark-tb">
@@ -122,7 +122,7 @@ const PickSide = (a) => {
             :key="y"
             @click="MakeMove(x, y)"
             :class="`border-2 border-light-tb dark:border-dark-tb w-24 h-24 hover:bg-light-ext flex items-center justify-center material-icons-outlined text-4xl cursor-pointer ${
-              cell === 'X' ? 'text-pink-500' : 'text-blue-400'
+              cell === 'X' ? 'text-light-tx2' : 'text-blue-400'
             }`"
           >
             {{ cell === "X" ? "close" : cell === "O" ? "circle" : "" }}
