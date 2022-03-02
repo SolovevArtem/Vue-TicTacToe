@@ -70,6 +70,9 @@ const SwitchTheme = () => {
   }
 };
 
+
+
+
 const PickSide = (a) => {
   player.value = a;
   console.log(player.value);
@@ -95,7 +98,7 @@ const PickSide = (a) => {
           <span class="text-xs font-extralight">Light </span>
 
           <div>
-            <input type="checkbox" name="" id="checkbox" class="hidden" />
+            <input @click="SwitchTheme()" type="checkbox" name="" id="checkbox" class="hidden" />
             <label for="checkbox" class="cursor-pointer">
               <div
                 class="w-9 h-5 flex items-center bg-gray-300 rounded-full p2"
@@ -160,15 +163,18 @@ const PickSide = (a) => {
 <style>
 #checkbox:checked + label .switch-ball {
   background-color: white;
-  transform: translateX(24px);
+  transform: translateX(18px);
   transition: transform 0.3s linear;
 }
 
 #checkbox:not(:checked) + label .switch-ball {
   background-color: white;
-  transform: translateX(0px);
+  transform: translateX(2px);
   transition: transform 0.3s linear;
 }
 
+  * {
+    @apply transition-colors duration-700;
+  }
 
 </style>
