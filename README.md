@@ -3,7 +3,7 @@
 > Live demo [_here_](hvue-vite-tictactoe.vercel.app). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Example screenshot](./public/TTC-Light.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 ## Table of Contents
