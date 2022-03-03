@@ -3,7 +3,7 @@
 > Live demo [_here_](hvue-vite-tictactoe.vercel.app). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Screenshots
-![Example screenshot](./public/TTC-Light.png)
+![Example screenshot](./img/screenshot.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 ## Table of Contents
@@ -38,6 +38,11 @@ List the ready features here:
 - A choice to pick which player(sign) starts first
 
 
+## Screenshots
+![Example screenshot](./img/screenshot.png)
+<!-- If you have screenshots you'd like to share, include them here. -->
+
+
 ## Setup
 What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
 
@@ -69,7 +74,7 @@ Room for improvement:
 - Add some new variations of the TicTacToe game and add an option to choose between them
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by tg/ig **_@s0lart_** - feel free to contact me!
 
 
 <!-- Optional -->
