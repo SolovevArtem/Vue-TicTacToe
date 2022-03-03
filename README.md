@@ -3,7 +3,7 @@
 > Live demo [_here_](hvue-vite-tictactoe.vercel.app). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Screenshots
-![Example screenshot](./scr/TTC-Light.png)
+![Example screenshot](./public/TTC-Light.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 ## Table of Contents
@@ -36,11 +36,6 @@ List the ready features here:
 - Polished hoover effects and animations
 - Light/Dark UI toggle switch with smooth color transitions
 - A choice to pick which player(sign) starts first
-
-
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
 
 
 ## Setup
